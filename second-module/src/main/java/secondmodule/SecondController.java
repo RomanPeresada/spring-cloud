@@ -1,0 +1,15 @@
+package secondmodule;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/second")
+public class SecondController {
+
+    @GetMapping
+    public String getSecond() {
+        return "from second";
+    }
+}
