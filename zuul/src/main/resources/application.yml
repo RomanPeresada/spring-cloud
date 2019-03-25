@@ -1,0 +1,31 @@
+spring:
+  application:
+    name:
+      zuul-app
+
+server:
+  port:
+    5555
+
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://localhost:9000/eureka
+
+zuul:
+  routes:
+    first-app:
+      path: /first/**
+      serviceId: first-app
+    second-app:
+      path: /second/**
+      serviceId: second-app
+
+second-app:
+  ribbon:
+    listOfServers: localhost:8002
+
+first-app:
+  ribbon:
+    listOfServers: localhost:8001

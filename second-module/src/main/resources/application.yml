@@ -1,0 +1,18 @@
+spring:
+  application:
+    name:
+      second-app
+
+server:
+  port:
+    8002
+
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://localhost:9000/eureka
+
+ribbon:
+  eureka:
+    enabled: false
