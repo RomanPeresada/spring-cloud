@@ -1,5 +1,6 @@
 package firstmodule.controller;
 
+import firstmodule.FirstService;
 import firstmodule.domain.CommandDomain;
 import firstmodule.domain.QueryDomain;
 import firstmodule.repository.QueryRepository;
@@ -18,6 +19,9 @@ public class QueryController {
 
     @Autowired
     private QueryRepository queryRepository;
+
+    @Autowired
+    private FirstService firstService;
 
     @GetMapping(value = "/get-all")
     public List<QueryDomain> getAll() {
@@ -39,18 +43,15 @@ public class QueryController {
         System.out.println("Success: " + commandDomain.toString());
     }
 
-    @KafkaListener(topics = "show", groupId = "2")
-    public void show(CommandDomain commandDomain) {
-        System.out.println("Have got: " + commandDomain);
+
+    @GetMapping("/first")
+    public String getMyString() {
+        return "from first";
     }
 
-//    @KafkaListener(topics = "delete", groupId = "1")
-//    public void delete(CommandDomain commandDomain) {
-//        queryRepository.delete(QueryDomain.builder()
-//                .id(commandDomain.getId())
-//                .name(commandDomain.getName())
-//                .yearOfBirthday(commandDomain.getYearOfBirthday())
-//                .build());
-//        System.out.println("Success deleting: " + commandDomain);
-//    }
+    @GetMapping("/second-from-first")
+    public String getSecond() {
+        return firstService.getSecond();
+    }
+
 }

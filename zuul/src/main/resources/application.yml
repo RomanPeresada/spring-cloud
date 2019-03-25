@@ -13,11 +13,6 @@ eureka:
       defaultZone:
         http://localhost:9000/eureka
 
-ribbon:
-  eureka:
-    enabled: false
-  ReadTimeout: 60000
-
 zuul:
   routes:
     first-app:
@@ -31,6 +26,6 @@ second-app:
   ribbon:
     listOfServers: localhost:8002
 
-#first-app:
-#  ribbon:
-#    listOfServers: localhost:8001
+first-app:
+  ribbon:
+    listOfServers: localhost:8001

@@ -25,14 +25,4 @@ public class FirstService {
     private String defaultMethod() {
         return "defaultMethod";
     }
-
-    @Scheduled(initialDelay = 10000, fixedDelay = 5000)
-    public void produce() {
-        kafkaTemplate.send("show", CommandDomain.builder()
-                .id((long) new Random().nextInt(2411))
-                .name("name + " + System.currentTimeMillis() / 10000)
-                .password("password " + +System.currentTimeMillis() / 10000)
-                .yearOfBirthday(new Random().nextInt(2311))
-                .build());
-    }
 }

@@ -35,34 +35,8 @@ public class KafkaProducerConfig {
         return new KafkaTemplate<>(producerFactoryJson());
     }
 
-//    @Bean
-//    public ProducerFactory<String, Long> producerFactoryLong() {
-//        Map<String, Object> cfg = new HashMap<>();
-//        cfg.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
-//        cfg.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-//        cfg.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, LongSerializer.class);
-//
-//        return new DefaultKafkaProducerFactory<>(cfg);
-//    }
-//
-//    @Bean
-//    public KafkaTemplate<String, Long> kafkaTemplateLong() {
-//        return new KafkaTemplate<>(producerFactoryLong());
-//    }
-
-
     @Bean
     public NewTopic add() {
         return new NewTopic("add", 1, (short) 1);
-    }
-
-    @Bean
-    public NewTopic delete() {
-        return new NewTopic("delete", 1, (short) 1);
-    }
-
-    @Bean
-    public NewTopic show() {
-        return new NewTopic("show", 1, (short) 1);
     }
 }
